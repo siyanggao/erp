@@ -1,16 +1,31 @@
 import React from 'react'
 import './login.css'
-import { Input } from 'antd';
+import { Input,Button } from 'antd';
 import { UserOutlined ,LockOutlined} from '@ant-design/icons';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import http from '../../util/http'
 
 export default class Login extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            loading: false
         }
+    }
+    submit = (e) => {
+        http({
+            loading: status => {
+                this.setState({loading:true})
+            }
+        })
+    }
+    handleUsernameChange = (e) => {
+        this.state.username = e.target.value
+    }
+    handlePasswordChange = e => {
+        this.state.password = e.target.value
     }
     render() {
         return (
@@ -20,17 +35,18 @@ export default class Login extends React.Component{
                 <div className="login">
                     <div>logo</div>
                     <div>
-                        <Input size="large" placeholder="用户名" prefix={<UserOutlined />} />
+                        <Input size="large" placeholder="用户名" prefix={<UserOutlined />} onChange={this.handleUsernameChange}/>
                     </div>
-                    <div>
                         <Input.Password
+                            className="password"
                             size="large"
                             placeholder="密码"
                             prefix={<LockOutlined />}
+                            onChange={this.handlePasswordChange}
                             iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                         />
-                    </div>
-                    <button>button</button>
+                    <Button type="primary" size="large" block className="login_btn" 
+                        onClick={()=>this.submit()} loading={this.state.loading}>登录</Button>
                 </div>
             </div>
         )

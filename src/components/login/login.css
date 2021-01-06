@@ -11,4 +11,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+.password{
+    margin-top:30px;
+}
+.login_btn{
+    margin-top:100px;
 }
