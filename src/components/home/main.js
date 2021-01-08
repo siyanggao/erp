@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< HEAD
 import { Tabs,Layout,Input,Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import {Route, HashRouter, Switch} from 'react-router-dom'
@@ -6,6 +7,15 @@ import Detail1 from '../detail1'
 import Detail2 from '../detail2'
 import './main.css'
 
+=======
+import { Tabs } from 'antd'
+import { renderRoutes,matchRoutes } from 'react-router-config'
+import {Route, HashRouter, Switch} from 'react-router-dom'
+import Detail1 from '../detail1'
+import Detail2 from '../detail2'
+import Content from './content'
+import routes from '../../routes'
+>>>>>>> 2e588627ad408bdd00073c929cc483f00b2a67c5
 
 const { TabPane } = Tabs;
 const { Header, Footer, Sider, Content } = Layout;
@@ -35,6 +45,7 @@ export default class Main extends React.Component{
         console.log(key);
     }
     render() {
+        console.log('matchRoutes', matchRoutes(routes, "/child/23"));
         return (
             <div>
                 <Layout>
@@ -51,6 +62,12 @@ export default class Main extends React.Component{
                     </Header>
                 </Layout>
                 <div>
+                {/* {this.props.children} */}
+                {console.log(this.props.route.routes)}
+                {renderRoutes(this.props.route.routes)}
+
+                {/* <Content/> */}
+                {/* <div>
                     <Tabs defaultActiveKey="1" onChange={this.callback} type="editable-card">
                         <TabPane tab="Tab 1" key="1" >
                         </TabPane>
@@ -59,13 +76,13 @@ export default class Main extends React.Component{
                         <TabPane tab="Tab 3" key="3">
                         </TabPane>
                     </Tabs>
-                </div>
-                <HashRouter>
+                </div> */}
+                {/* <HashRouter>
                     <Switch>
                         <Route path="/home/detail1" component={Detail1}/>
                         <Route  path="/detail2" component={Detail2}/>
                     </Switch>
-                </HashRouter>
+                </HashRouter> */}
             </div>
         )
     }
