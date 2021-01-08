@@ -1,0 +1,28 @@
+.header{
+    background: cornflowerblue;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.header_icon{
+    width:100px;
+    height: 100%;
+    background-image: url(../../image/header_icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.header_user{
+    color:white;
+}
+.header_divider{
+    width:2px;
+    color:white;
+    margin: 0 20px;
+}
+.header_search{
+    width: 200px;
+    height: 50%;
+}
+.header_empty{
+    flex:1;
+}

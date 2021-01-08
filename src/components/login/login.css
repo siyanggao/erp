@@ -3,20 +3,31 @@
     height: 100vh;
 }
 .logo{
-    flex:2;
+    flex:5;
     background-image: url(../../image/login_bg.jpg);
 }
 .login{
-    flex:1;
+    flex:2;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding-left: 60px;
     padding-right: 60px;
+}
+.username{
+    margin-top:30px;
 }
 .password{
     margin-top:30px;
 }
 .login_btn{
     margin-top:100px;
+}
+.icon{
+    width: 60%;
+    height:100px;
+    background-image: url(../../image/icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
 }

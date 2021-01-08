@@ -33,18 +33,18 @@ export default class Login extends React.Component{
                 <div className="logo">
                 </div>
                 <div className="login">
-                    <div>logo</div>
-                    <div>
-                        <Input size="large" placeholder="用户名" prefix={<UserOutlined />} onChange={this.handleUsernameChange}/>
-                    </div>
-                        <Input.Password
-                            className="password"
-                            size="large"
-                            placeholder="密码"
-                            prefix={<LockOutlined />}
-                            onChange={this.handlePasswordChange}
-                            iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                        />
+                <div className="icon"></div>
+                    <Input size="large" placeholder="用户名" prefix={<UserOutlined />} 
+                        onChange={this.handleUsernameChange}
+                        className="username"/>
+                    <Input.Password
+                        className="password"
+                        size="large"
+                        placeholder="密码"
+                        prefix={<LockOutlined />}
+                        onChange={this.handlePasswordChange}
+                        iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                    />
                     <Button type="primary" size="large" block className="login_btn" 
                         onClick={()=>this.submit()} loading={this.state.loading}>登录</Button>
                 </div>
