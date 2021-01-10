@@ -26,3 +26,6 @@
 .header_empty{
     flex:1;
 }
+.ant-tabs-top > .ant-tabs-nav{
+    margin:0px;
+}

@@ -1,69 +1,89 @@
 import React from 'react'
-<<<<<<< HEAD
-import { Tabs,Layout,Input,Menu, Dropdown } from 'antd';
+import { Tabs, Layout, Input, Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import {Route, HashRouter, Switch} from 'react-router-dom'
-import Detail1 from '../detail1'
-import Detail2 from '../detail2'
 import './main.css'
-
-=======
-import { Tabs } from 'antd'
-import { renderRoutes,matchRoutes } from 'react-router-config'
-import {Route, HashRouter, Switch} from 'react-router-dom'
+import { renderRoutes } from 'react-router-config'
 import Detail1 from '../detail1'
 import Detail2 from '../detail2'
 import Content from './content'
-import routes from '../../routes'
->>>>>>> 2e588627ad408bdd00073c929cc483f00b2a67c5
 
 const { TabPane } = Tabs;
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Sider } = Layout;
 
 const menu = (
     <Menu>
-      <Menu.Item>
-        <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-          1st menu item
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
+                1st menu item
         </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-          2nd menu item
+        </Menu.Item>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
+                2nd menu item
         </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-          3rd menu item
+        </Menu.Item>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
+                3rd menu item
         </a>
-      </Menu.Item>
+        </Menu.Item>
     </Menu>
-  );
+);
 
-export default class Main extends React.Component{
+export default class Main extends React.Component {
+    constructor(props) {
+        super(props)
+        const panes = [
+            { title: 'Tab 1', content: 'Content of Tab Pane 1', key: '1', closable: false },
+            { title: 'Tab 2', content: 'Content of Tab Pane 2', key: '2', closable: false },
+        ];
+        this.state = {
+            activeKey: panes[0].key,
+            panes,
+        }
+    }
+    onChange = activeKey => {
+        this.setState({ activeKey });
+        switch (activeKey) {
+            case '1':
+                this.props.history.push('/home')
+                break;
+            case '2':
+                this.props.history.push('/menu')
+                break;
+        }
+    };
     callback = (key) => {
         console.log(key);
     }
     render() {
-        console.log('matchRoutes', matchRoutes(routes, "/child/23"));
         return (
             <div>
                 <Layout>
                     <Header className="header">
                         <div className="header_icon"></div>
                         <div className="header_empty"></div>
-                        <Input placeholder="search" className="header_search"/>
+                        <Input placeholder="search" className="header_search" />
                         <div className="header_divider">|</div>
                         <Dropdown overlay={menu} className="header_user" placement="bottomCenter">
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                            Hover me <DownOutlined />
+                                Hover me <DownOutlined />
                             </a>
                         </Dropdown>
                     </Header>
+                    <Tabs
+                        hideAdd
+                        onChange={this.onChange}
+                        activeKey={this.state.activeKey}
+                        onEdit={this.onEdit}
+                        size="small"
+                        type="editable-card">
+                        {this.state.panes.map(pane => (
+                            <TabPane tab={pane.title} key={pane.key} closable={pane.closable}></TabPane>
+                        ))}
+                    </Tabs>
                 </Layout>
-                <div>
                 {/* {this.props.children} */}
-                {console.log(this.props.route.routes)}
                 {renderRoutes(this.props.route.routes)}
 
                 {/* <Content/> */}

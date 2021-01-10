@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {Route, HashRouter, Switch} from 'react-router-dom'
-import Home from './components/home/home'
+import {Route, HashRouter } from 'react-router-dom'
+import Home from './components/home/menu'
 import Login from './components/login/login'
 import { renderRoutes } from 'react-router-config';
 import routes from './routes'
