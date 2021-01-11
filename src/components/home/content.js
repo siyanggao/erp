@@ -1,7 +1,6 @@
 import React from 'react'
 import {  Tabs, Button  } from 'antd';
 import { renderRoutes } from 'react-router-config';
-import routes from './routes'
 
 const { TabPane } = Tabs;
 export default class Content extends React.Component{
@@ -36,15 +35,14 @@ export default class Content extends React.Component{
                     activeKey={this.state.activeKey}
                     onEdit={this.onEdit}
                     size="small"
-                    type="editable-card"
-                    >
+                    type="editable-card">
                     {this.state.panes.map(pane => (
                         <TabPane tab={pane.title} key={pane.key}>
                         {pane.content}
                         </TabPane>
                     ))}
                 </Tabs>
-                {renderRoutes(routes)}
+                {renderRoutes(this.props.route.routes)}
             </div>
         )
     }

@@ -1,0 +1,10 @@
+.home_div1{
+    margin: 0 2em;
+}
+.card_container{
+    display: flex;
+}
+.home_container{
+    width: 25em;
+    margin-right: 2em;
+}

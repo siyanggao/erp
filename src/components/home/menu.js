@@ -1,36 +1,27 @@
 import React from 'react'
-import 'antd/dist/antd.css';
 import { Menu } from 'antd';
-
+import './menu.css'
 import { Link } from 'react-router-dom'
+import { renderRoutes } from 'react-router-config';
 import {Route, HashRouter, Switch} from 'react-router-dom'
 import Detail1 from '../detail1'
 import Detail2 from '../detail2'
+import menuConfig from '../menu/menu_config'
+
 const { SubMenu,MenuItem } = Menu;
 
 export default class Home extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            slideBarConfig :[
-                {name: "列表", icon: "ordered-list", url: "/list", children: [
-                  {name: "详情", url: "/list/detail", hidden: true},
-                ]},
-                {name: "系统管理", icon: "appstore", url: "/system", children: [
-                  {name: "账号管理", url: "/system/accountManage"},
-                  {name: "角色管理", url: "/system/roleManage"}
-                ]},
-                {name: "兄弟组件传值", icon: "hdd", url: "/childToChild", hidden: true,},
-                {name: "父组件向子组件传值", icon: "snippets", url: "/parentToChild"},
-                {name: "子组件向父组件传值", icon: "copy", url: "/childToParent"},
-                {name: "状态管理Redux", icon: "inbox", url: "/redux"}
-            ]
+            
             
         };
     }
      //处理左侧菜单
      getSubmenu = () => {
-        return this.state.slideBarConfig.map(item => {
+        return menuConfig.map(item => {
+            if(item.type !== 'mainmenu') return
             if(!item.children || item.children.length === 0){    //如果当前路由没有子路由且该路由的hidden为false或不设置该路由的hidden时则直接显示该路由，若该路由的hidden为true则不显示该路由
                 if(item.hidden) return false
  
@@ -103,24 +94,16 @@ export default class Home extends React.Component{
 
     render() {
         return (
-            <div>
+            <div className="menu_root">
                 <Menu
                     onClick={this.handleClick}
                     style={{ width: 256 }}
                     defaultSelectedKeys={['1']}
                     defaultOpenKeys={['sub1']}
-                    mode="inline"
-                >
-                    {console.log(this.getSubmenu())}
+                    mode="inline">
                     {this.getSubmenu()}
                 </Menu>
-                <HashRouter>
-    <Switch>
-    <Route path="/home/detail1" component={Detail1}/>
-      <Route  path="/detail2" component={Detail2}/>
-      
-    </Switch>
-  </HashRouter>
+               {renderRoutes(this.props.route.routes)}
             </div>
         )
     }

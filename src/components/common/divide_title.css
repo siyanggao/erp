@@ -1,0 +1,17 @@
+.divide_root{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.divide_line{
+    width:0.3em;
+    height:1.3em;
+    background-color:#3787E1;
+    margin: 1em 0.5em 1em 0;
+}
+.divide_title{
+    font-size: 1.2em;
+}
+.divide_title_blod{
+    font-weight: bold;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tabs, Layout, Input, Menu, Dropdown } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { DownOutlined,SearchOutlined } from '@ant-design/icons';
 import './main.css'
 import { renderRoutes } from 'react-router-config'
 import Detail1 from '../detail1'
@@ -63,7 +63,7 @@ export default class Main extends React.Component {
                     <Header className="header">
                         <div className="header_icon"></div>
                         <div className="header_empty"></div>
-                        <Input placeholder="search" className="header_search" />
+                        <Input placeholder="search" className="header_search" prefix={<SearchOutlined />}/>
                         <div className="header_divider">|</div>
                         <Dropdown overlay={menu} className="header_user" placement="bottomCenter">
                             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
