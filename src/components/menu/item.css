@@ -1,0 +1,7 @@
+.item_root{
+    width:10em;
+    height:3em;
+    display: inline-block;
+    text-align: center;
+    line-height: 3em;
+}

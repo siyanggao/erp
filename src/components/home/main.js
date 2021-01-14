@@ -3,12 +3,9 @@ import { Tabs, Layout, Input, Menu, Dropdown } from 'antd';
 import { DownOutlined,SearchOutlined } from '@ant-design/icons';
 import './main.css'
 import { renderRoutes } from 'react-router-config'
-import Detail1 from '../detail1'
-import Detail2 from '../detail2'
-import Content from './content'
 
 const { TabPane } = Tabs;
-const { Header, Footer, Sider } = Layout;
+const { Header } = Layout;
 
 const menu = (
     <Menu>
@@ -51,6 +48,9 @@ export default class Main extends React.Component {
             case '2':
                 this.props.history.push('/menu')
                 break;
+            default:
+                this.props.history.push('/home')
+                break;
         }
     };
     callback = (key) => {
@@ -66,7 +66,7 @@ export default class Main extends React.Component {
                         <Input placeholder="search" className="header_search" prefix={<SearchOutlined />}/>
                         <div className="header_divider">|</div>
                         <Dropdown overlay={menu} className="header_user" placement="bottomCenter">
-                            <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                            <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="/home">
                                 Hover me <DownOutlined />
                             </a>
                         </Dropdown>

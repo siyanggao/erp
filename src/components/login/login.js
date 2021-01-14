@@ -4,8 +4,9 @@ import { Input,Button } from 'antd';
 import { UserOutlined ,LockOutlined} from '@ant-design/icons';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import http from '../../util/http'
+import {Cookies,withCookies} from 'react-cookie'
 
-export default class Login extends React.Component{
+class Login extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -15,17 +16,23 @@ export default class Login extends React.Component{
         }
     }
     submit = (e) => {
-        http({
-            loading: status => {
-                this.setState({loading:true})
-            }
-        })
+        // http({
+        //     loading: status => {
+        //         this.setState({loading:true})
+        //     }
+        // })
+        this.props.history.push('/home')
+        this.props.cookies.set("token","123")
     }
     handleUsernameChange = (e) => {
-        this.state.username = e.target.value
+        this.setState({
+            username: e.target.value
+        })
     }
     handlePasswordChange = e => {
-        this.state.password = e.target.value
+        this.setState({
+            password: e.target.value
+        })
     }
     render() {
         return (
@@ -52,3 +59,5 @@ export default class Login extends React.Component{
         )
     }
 }
+
+export default withCookies(Login)

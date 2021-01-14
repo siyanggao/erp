@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Tabs, Button  } from 'antd';
+import {  Tabs  } from 'antd';
 import { renderRoutes } from 'react-router-config';
 
 const { TabPane } = Tabs;

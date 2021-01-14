@@ -6,7 +6,7 @@ export default class DivideHeader extends Component {
         return (
             <div className="divide_root">
                 <div className="divide_line"></div>
-                <div className="divide_title" className={this.props.isBlod?"divide_title_blod":null}>{this.props.title}</div>
+                <div className={'divide_title '+this.props.isBlod?"divide_title_blod":null}>{this.props.title}</div>
             </div>
         )
     }
