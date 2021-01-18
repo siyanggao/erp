@@ -5,20 +5,19 @@ import './index.css';
 import { HashRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config';
 import routes from './routes'
+import { Provider } from 'mobx-react'
+import stores from './store'
 
 
 ReactDOM.render(
   // <React.StrictMode>
   //   <App />
   // </React.StrictMode>,
-  <HashRouter>
-    {/* <Switch>
-    <Route exact path="/login" component={Login}/>
-      <Route  path="/" component={Home}/>
-      
-    </Switch> */}
-    {renderRoutes(routes)}
-  </HashRouter>,
+  <Provider {...stores}>
+      <HashRouter>
+          {renderRoutes(routes)}
+      </HashRouter>
+  </Provider>,
   document.getElementById('root')
 );
 
