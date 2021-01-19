@@ -10,13 +10,10 @@ const { SubMenu } = Menu;
 export default class Home extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {};
-        console.log(this)
-        
+        this.state = {};        
     }
      //处理左侧菜单
      getSubmenu = () => {
-        console.log(this.$http)
         return menuConfig.map(item => {
             if(item.type !== 'mainmenu') return null
             return (

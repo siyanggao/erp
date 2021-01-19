@@ -8,6 +8,7 @@ import SubMenu from './components/menu/submenu'
 import Main from './components/home/main'
 import Detail1 from './components/detail1'
 import Detail2 from './components/detail2'
+import PZLR from './components/finance/zongzhang/pzlr'
 
 const routes = [
     {
@@ -36,6 +37,10 @@ const routes = [
                         component: SubMenu,
                     }
                 ]
+            },
+            {
+                path: '/pzlr',
+                component: PZLR,
             },
             {
                 path: '/detail1',

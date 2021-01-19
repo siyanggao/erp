@@ -28,7 +28,7 @@ export default class SubMenu extends Component {
                             <Divider title={item.name} isBlod={true}></Divider>
                             {
                                 item.children.map(item2=>{
-                                    return <div className="item_divider" key={item2.url}><Item name={item2.name} url={item2.url}></Item></div>
+                                    return <div className="item_divider" key={item2.url}><Item name={item2.name} url={item2.url} item={item2}></Item></div>
                                 })
                             }
                         </div>

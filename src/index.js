@@ -6,7 +6,7 @@ import { HashRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config';
 import routes from './routes'
 import { Provider } from 'mobx-react'
-import stores from './store'
+import stores from './store/index'
 
 
 ReactDOM.render(

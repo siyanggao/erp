@@ -1,4 +1,5 @@
 import React from 'react'
+import { observer, inject } from "mobx-react";
 import { Tabs, Layout, Input, Menu, Dropdown } from 'antd';
 import { DownOutlined,SearchOutlined } from '@ant-design/icons';
 import './main.css'
@@ -27,16 +28,18 @@ const menu = (
     </Menu>
 );
 
-export default class Main extends React.Component {
+@inject("tabs")
+@observer
+class Main extends React.Component {
     constructor(props) {
         super(props)
-        const panes = [
-            { title: 'Tab 1', content: 'Content of Tab Pane 1', key: '1', closable: false },
-            { title: 'Tab 2', content: 'Content of Tab Pane 2', key: '2', closable: false },
-        ];
+        // const panes = [
+        //     { title: 'Tab 1', content: 'Content of Tab Pane 1', key: '1', closable: false },
+        //     { title: 'Tab 2', content: 'Content of Tab Pane 2', key: '2', closable: false },
+        // ];
         this.state = {
-            activeKey: panes[0].key,
-            panes,
+            activeKey: this.props.tabs.data[0].key,
+            panes:this.props.tabs.data,
         }
     }
     onChange = activeKey => {
@@ -83,7 +86,6 @@ export default class Main extends React.Component {
                         ))}
                     </Tabs>
                 </Layout>
-                {/* {this.props.children} */}
                 {renderRoutes(this.props.route.routes)}
 
                 {/* <Content/> */}
@@ -107,3 +109,5 @@ export default class Main extends React.Component {
         )
     }
 }
+
+export default Main

@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
+import { observer, inject } from "mobx-react";
+import { withRouter } from 'react-router-dom'
 import './item.css'
 
-export default class Item extends Component {
+@inject("tabs")
+@observer
+class Item extends Component {
+    constructor(props){
+        super(props)
+    }
     click = e => {
-        console.log(this.props.url)
+        console.log(this.props.item)
     }
     render() {
         return (
@@ -13,3 +20,4 @@ export default class Item extends Component {
         )
     }
 }
+export default withRouter(Item)
