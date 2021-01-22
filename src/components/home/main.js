@@ -6,7 +6,7 @@ import './main.css'
 import { renderRoutes } from 'react-router-config'
 
 const { TabPane } = Tabs;
-const { Header } = Layout;
+const { Header,Content } = Layout;
 
 const menu = (
     <Menu>
@@ -44,17 +44,24 @@ class Main extends React.Component {
     }
     onChange = activeKey => {
         this.setState({ activeKey });
-        switch (activeKey) {
-            case '1':
-                this.props.history.push('/home')
-                break;
-            case '2':
-                this.props.history.push('/menu')
-                break;
-            default:
-                this.props.history.push('/home')
-                break;
-        }
+        this.state.panes.map(item => {
+            if(item.key === activeKey){
+                item.display = true
+            }else{
+                item.display = false
+            }
+        })
+        // switch (activeKey) {
+        //     case '1':
+        //         this.props.history.push('/home')
+        //         break;
+        //     case '2':
+        //         this.props.history.push('/menu')
+        //         break;
+        //     default:
+        //         this.props.history.push('/home')
+        //         break;
+        // }
     };
     callback = (key) => {
         console.log(key);
@@ -85,8 +92,16 @@ class Main extends React.Component {
                             <TabPane tab={pane.title} key={pane.key} closable={pane.closable}></TabPane>
                         ))}
                     </Tabs>
+                    <Content className="content">
+                    {
+                        this.state.panes.map(item => {
+                            return <div style={{display:item.display?null:'none'}}><item.Component/></div>
+                        })
+                    }
+                    </Content>
                 </Layout>
-                {renderRoutes(this.props.route.routes)}
+               
+                {/* {renderRoutes(this.props.route.routes)} */}
 
                 {/* <Content/> */}
                 {/* <div>

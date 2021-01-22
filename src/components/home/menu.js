@@ -4,13 +4,21 @@ import './menu.css'
 import { Link } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config';
 import menuConfig from '../menu/menu_config'
+import MySubMenu from '../menu/submenu'
 
 const { SubMenu } = Menu;
 
 export default class Home extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {};        
+        this.state = {
+            selectedData: menuConfig[0].children[0]
+        };        
+    }
+    clickHandler = (item) => {
+        this.setState({
+            selectedData: item
+        })
     }
      //处理左侧菜单
      getSubmenu = () => {
@@ -19,7 +27,7 @@ export default class Home extends React.Component{
             return (
                 <SubMenu key={item.url} title={<span><span>{item.name}</span></span>}>
                     {item.children.map(v => {                                
-                        return <Menu.Item key={v.url}><Link to={'/menu/'+v.url} replace>{v.name}</Link></Menu.Item>                               
+                        return <Menu.Item key={v.url} onClick={()=>this.clickHandler(v)}>{v.name}</Menu.Item>                               
                     })}
                 </SubMenu>
             )
@@ -37,7 +45,8 @@ export default class Home extends React.Component{
                     mode="inline">
                     {this.getSubmenu()}
                 </Menu>
-               {renderRoutes(this.props.route.routes)}
+                <MySubMenu data={this.state.selectedData}></MySubMenu>
+               {/* {renderRoutes(this.props.route.routes)} */}
             </div>
         )
     }
